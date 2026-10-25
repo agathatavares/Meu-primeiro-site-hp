@@ -1,144 +1,63 @@
+
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inscrição em Hogwarts</title>
-    <style>
-        /* Estilo Temático Harry Potter */
-        body {
-            background-color: #1a1a1a;
-            color: #f3dfa2;
-            font-family: 'Courier New', Courier, monospace;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            background-image: radial-gradient(circle, #2c2c2c 10%, #111 90%);
-        }
-
-        .form-container {
-            background-color: #2a251f;
-            border: 3px solid #dbb04a;
-            border-radius: 10px;
-            padding: 30px;
-            width: 100%;
-            max-width: 450px;
-            box-shadow: 0 0 20px rgba(219, 176, 74, 0.2);
-            box-sizing: border-box;
-        }
-
-        h2 {
-            text-align: center;
-            color: #dbb04a;
-            margin-top: 0;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            border-bottom: 1px solid #dbb04a;
-            padding-bottom: 10px;
-        }
-
-        label {
-            display: block;
-            margin: 15px 0 5px;
-            font-weight: bold;
-            font-size: 14px;
-        }
-
-        input[type="text"],
-        input[type="email"],
-        select,
-        textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #dbb04a;
-            border-radius: 5px;
-            background-color: #1a1a1a;
-            color: #fff;
-            font-family: inherit;
-            box-sizing: border-box;
-        }
-
-        input:focus, select:focus, textarea:focus {
-            outline: none;
-            border-color: #fff;
-            box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-        }
-
-        button {
-            width: 100%;
-            padding: 12px;
-            background-color: #dbb04a;
-            color: #1a1a1a;
-            border: none;
-            border-radius: 5px;
-            font-weight: bold;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background 0.3s;
-            text-transform: uppercase;
-            margin-top: 15px;
-        }
-
-        button:hover {
-            background-color: #fff;
-            color: #1a1a1a;
-        }
-
-        .footer-nota {
-            text-align: center;
-            font-size: 11px;
-            color: #888;
-            margin-top: 20px;
-        }
-    </style>
+    <title>Formulário - Harry Potter</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="form-container">
-        <h2>Pergaminho de Inscrição</h2>
-        
-        <!-- Formulário integrado com o StaticForms -->
-        <form action="https://staticforms.xyz" method="post">
-            
-            <!-- COLE SUA CHAVE DO STATICFORMS AQUI EMBAIXO -->
-            <input type="hidden" name="accessKey" value="SUA_CHAVE_AQUI">
-            
-            <!-- Redireciona o usuário de volta para o seu site após o envio -->
-            <input type="hidden" name="redirectTo" value="https://github.io">
+    <header>
+        <h1>O Mundo Mágico de Harry Potter</h1>
+        <nav>
+            <a href="index.html">Início</a>
+            <a href="galeria.html">Galeria</a>
+            <a href="formulario.html">Formulário</a>
+        </nav>
+    </header>
 
-            <!-- Campo Nome -->
-            <label for="name">Nome Completo do Bruxo(a):</label>
-            <input type="text" id="name" name="name" placeholder="Ex: Harry Potter" required>
+    <main>
+        <h2>Faça parte do mundo mágico!</h2>
+        <p>Responda às perguntas sobre Harry Potter.</p>
 
-            <!-- Campo E-mail -->
-            <label for="email">Endereço de Coruja (E-mail):</label>
-            <input type="email" id="email" name="email" placeholder="Ex: harry@hogwarts.com" required>
+        <form action="https://formsubmit.co/" method="POST">
 
-            <!-- Campo Seleção da Casa -->
-            <label for="casa">Sua Casa de Hogwarts:</label>
-            <select id="casa" name="subject" required>
-                <option value="" disabled selected>Escolha sua casa...</option>
-                <option value="Grifinória">Grifinória 🦁</option>
-                <option value="Sonserina">Sonserina 🐍</option>
-                <option value="Corvinal">Corvinal 🦅</option>
-                <option value="Lufa-Lufa">Lufa-Lufa 🦡</option>
+            <label for="nome">Seu nome:</label>
+            <input type="text" id="nome" name="nome"
+                   placeholder="Digite seu nome" required>
+
+            <label for="casa">Qual é sua casa de Hogwarts?</label>
+            <select id="casa" name="casa" required>
+                <option value="">Escolha sua casa</option>
+                <option value="Grifinória">Grifinória</option>
+                <option value="Sonserina">Sonserina</option>
+                <option value="Corvinal">Corvinal</option>
+                <option value="Lufa-Lufa">Lufa-Lufa</option>
             </select>
 
-            <!-- Campo Mensagem -->
-            <label for="mensagem">Mensagem para o Ministério da Magia:</label>
-            <textarea id="mensagem" name="message" rows="4" placeholder="Escreva seu feitiço favorito ou dúvida..." required></textarea>
+            <label for="filme">Qual é seu filme favorito?</label>
+            <input type="text" id="filme" name="filme"
+                   placeholder="Digite o nome do filme" required>
 
-            <!-- Botão Enviar -->
-            <button type="submit">Enviar pelo Correio de Coruja</button>
+            <label for="personagem">Quem é seu personagem favorito?</label>
+            <input type="text" id="personagem" name="personagem"
+                   placeholder="Digite o personagem" required>
+
+            <label for="opiniao">O que você mais gosta na saga?</label>
+            <textarea id="opiniao" name="opiniao"
+                      rows="5" placeholder="Escreva sua resposta..."
+                      required></textarea>
+
+            <button type="submit">Enviar respostas</button>
+
         </form>
+    </main>
 
-        <div class="footer-nota">
-            * Supervisionado pela Confederação Internacional de Bruxos.
-        </div>
-    </div>
+    <footer>
+        <p>O Mundo Mágico de Harry Potter</p>
+    </footer>
 
 </body>
 </html>
