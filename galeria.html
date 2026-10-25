@@ -1,15 +1,20 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <meta name="theme-color" content="#111116">
   <title>Galeria de Filmes | Mundo Bruxo</title>
-
   <link rel="stylesheet" href="style.css">
 
   <style>
+    * { box-sizing: border-box; }
+
+    body {
+      background: #111116;
+      color: #f5eee4;
+    }
+
     .introducao {
       text-align: center;
       padding: 45px 8% 20px;
@@ -25,80 +30,7 @@
       color: #d5cedd;
       max-width: 700px;
       margin: 0 auto;
-    }
-
-    .galeria {
-      display: grid;
-      grid-template-columns: repeat(
-        auto-fit,
-        minmax(230px, 1fr)
-      );
-      gap: 25px;
-      padding: 30px 8% 60px;
-    }
-
-    .filme {
-      background: #1d1928;
-      border: 2px solid #393044;
-      border-radius: 12px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .filme:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 10px 25px #00000050;
-    }
-
-    .filme img {
-      width: 100%;
-      aspect-ratio: 2 / 3;
-      object-fit: cover;
-      background: #292333;
-    }
-
-    .filme-conteudo {
-      padding: 16px;
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-    }
-
-    .filme h2 {
-      font-size: 20px;
-      color: #f0d98b;
-      margin-bottom: 8px;
-    }
-
-    .ano {
-      color: #e3c36c;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
-
-    .sinopse {
-      color: #d5cedd;
-      font-size: 14px;
-      line-height: 1.7;
-      margin-bottom: 0;
-    }
-
-    .filme:nth-child(4n + 1) {
-      border-color: #a52a35;
-    }
-
-    .filme:nth-child(4n + 2) {
-      border-color: #247653;
-    }
-
-    .filme:nth-child(4n + 3) {
-      border-color: #3976b8;
-    }
-
-    .filme:nth-child(4n) {
-      border-color: #c9a64b;
+      line-height: 1.8;
     }
 
     .casas-legenda {
@@ -106,40 +38,219 @@
       justify-content: center;
       flex-wrap: wrap;
       gap: 12px;
-      padding: 0 15px 20px;
+      padding: 15px;
     }
 
     .casa-tag {
-      padding: 6px 12px;
+      padding: 7px 13px;
       border-radius: 20px;
       font-size: 13px;
       background: #1d1928;
       border: 1px solid #51415f;
+      color: #e3c36c;
+    }
+
+    .galeria {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 25px;
+      padding: 30px 5% 60px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .filme {
+      background: #1b1b23;
+      border: 2px solid #393044;
+      border-radius: 18px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      transition: transform .35s ease, box-shadow .35s ease;
+      animation: surgir .7s ease both;
+    }
+
+    .filme:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 12px 30px #0008;
+    }
+
+    .poster {
+      position: relative;
+      overflow: hidden;
+      background: #292333;
+      aspect-ratio: 2 / 3;
+      border-bottom: 5px solid #a52a35;
+    }
+
+    .filme:nth-child(4n + 2) .poster {
+      border-color: #247653;
+    }
+
+    .filme:nth-child(4n + 3) .poster {
+      border-color: #3976b8;
+    }
+
+    .filme:nth-child(4n) .poster {
+      border-color: #c9a64b;
+    }
+
+    .poster img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      transition: transform .6s ease, filter .4s ease;
+    }
+
+    .filme:hover .poster img {
+      transform: scale(1.06);
+      filter: brightness(1.08);
+    }
+
+    .numero {
+      position: absolute;
+      top: 13px;
+      left: 13px;
+      z-index: 2;
+      background: #111116eF;
+      color: #e3c36c;
+      padding: 10px 15px;
+      border-radius: 10px;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      backdrop-filter: blur(8px);
+    }
+
+    .filme-conteudo {
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .filme h2 {
+      font-family: Georgia, serif;
+      font-size: clamp(18px, 2.3vw, 25px);
+      line-height: 1.35;
+      color: #f5eee4;
+      margin: 0 0 12px;
+    }
+
+    .ano {
+      color: #e3c36c;
+      font-weight: bold;
+      margin: 0 0 12px;
+    }
+
+    .sinopse {
+      color: #d5cedd;
+      font-size: 14px;
+      line-height: 1.8;
+      margin: 0 0 15px;
+    }
+
+    .casa-filme {
+      margin-top: auto;
+      padding-top: 10px;
+      font-size: 13px;
+      letter-spacing: 2px;
+      font-weight: bold;
+      color: #d9b95e;
+    }
+
+    .filme:nth-child(4n + 1) { border-color: #a52a35; }
+    .filme:nth-child(4n + 2) { border-color: #247653; }
+    .filme:nth-child(4n + 3) { border-color: #3976b8; }
+    .filme:nth-child(4n) { border-color: #c9a64b; }
+
+    .favorito {
+      text-align: center;
+      padding: 20px 20px 55px;
+    }
+
+    .favorito h2 {
+      color: #e3c36c;
+      font-family: Georgia, serif;
+      font-size: 28px;
+    }
+
+    .favorito p {
+      color: #d5cedd;
+      line-height: 1.7;
+    }
+
+    .botao-galeria {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 13px 22px;
+      background: #e3c36c;
+      color: #17141b;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 10px;
+      transition: transform .25s, background .25s;
+    }
+
+    .botao-galeria:hover {
+      transform: translateY(-3px);
+      background: #f5dc83;
+    }
+
+    footer {
+      text-align: center;
+      color: #bdb4c7;
+      padding: 25px 15px;
+      border-top: 1px solid #393044;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    @keyframes surgir {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (min-width: 900px) {
+      .galeria {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
     }
 
     @media (max-width: 600px) {
       .galeria {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 14px;
         padding: 25px 5% 45px;
       }
 
-      .filme-conteudo {
-        padding: 11px;
+      .filme-conteudo { padding: 12px; }
+
+      .filme h2 { font-size: 17px; }
+
+      .sinopse { font-size: 13px; }
+
+      .numero {
+        top: 9px;
+        left: 9px;
+        font-size: 16px;
+        padding: 8px 11px;
       }
 
-      .filme h2 {
-        font-size: 17px;
-      }
-
-      .sinopse {
-        font-size: 13px;
+      .casa-filme {
+        font-size: 10px;
+        letter-spacing: 1px;
       }
     }
 
     @media (max-width: 360px) {
-      .galeria {
-        grid-template-columns: 1fr;
+      .galeria { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
       }
     }
   </style>
@@ -149,7 +260,6 @@
 
   <header>
     <div class="logo">⚡ Mundo Bruxo</div>
-
     <nav>
       <a href="index.html">Início</a>
       <a href="galeria.html">Galeria</a>
@@ -158,14 +268,12 @@
   </header>
 
   <main>
-
     <section class="introducao">
       <h1>🎬 Galeria de Filmes</h1>
-
       <p>
-        Relembre os oito filmes de Harry Potter!
-        Conheça um pouquinho de cada aventura,
-        desde a primeira visita a Hogwarts até a batalha final.
+        Relembre os oito filmes de Harry Potter! Entre no mundo
+        da magia, reviva grandes aventuras e descubra novamente
+        os mistérios de Hogwarts.
       </p>
     </section>
 
@@ -178,188 +286,159 @@
 
     <section class="galeria">
 
-      <!-- FILME 1 -->
       <article class="filme">
-        <img
-          src="https://placehold.co/400x600/241b2f/f0d98b?text=Pedra+Filosofal"
-          alt="Imagem provisória do filme Harry Potter e a Pedra Filosofal"
-          loading="lazy"
-        >
-
+        <div class="poster">
+          <span class="numero">01</span>
+          <img src="https://image.tmdb.org/t/p/w500/1uQSh7P3k0oRbRf0vH8GVt4thp3.jpg"
+               alt="Harry Potter e a Pedra Filosofal" loading="lazy">
+        </div>
         <div class="filme-conteudo">
           <h2>Harry Potter e a Pedra Filosofal</h2>
           <p class="ano">📅 2001</p>
-
           <p class="sinopse">
-            Harry descobre que é um bruxo e começa a estudar
-            em Hogwarts. Lá, faz amizade com Rony e Hermione
-            e conhece um mundo cheio de magia, mistérios e
-            descobertas surpreendentes.
+            Harry descobre que é um bruxo e começa a estudar em
+            Hogwarts. Com Rony e Hermione, conhece um mundo cheio
+            de magia, amizades e mistérios.
           </p>
+          <span class="casa-filme">✦ GRIFINÓRIA</span>
         </div>
       </article>
 
-      <!-- FILME 2 -->
       <article class="filme">
-        <img
-          src="https://placehold.co/400x600/172b25/9de0bd?text=Camara+Secreta"
-          alt="Imagem provisória do filme Harry Potter e a Câmara Secreta"
-          loading="lazy"
-        >
-
+        <div class="poster">
+          <span class="numero">02</span>
+          <img src="https://image.tmdb.org/t/p/w500/sdEOH0992YZ0QSxgXNIGLq1ToUi.jpg"
+               alt="Harry Potter e a Câmara Secreta" loading="lazy">
+        </div>
         <div class="filme-conteudo">
           <h2>Harry Potter e a Câmara Secreta</h2>
           <p class="ano">📅 2002</p>
-
           <p class="sinopse">
-            No segundo ano em Hogwarts, acontecimentos
-            misteriosos assustam os alunos. Harry e seus
-            amigos investigam uma antiga lenda da escola
-            para descobrir o que está acontecendo.
+            No segundo ano em Hogwarts, acontecimentos misteriosos
+            assustam os alunos. Harry e seus amigos investigam
+            uma antiga lenda escondida na escola.
           </p>
+          <span class="casa-filme">✦ SONSERINA</span>
         </div>
       </article>
 
-      <!-- FILME 3 -->
       <article class="filme">
-        <img
-          src="https://placehold.co/400x600/17263b/9bcaff?text=Prisioneiro+de+Azkaban"
-          alt="Imagem provisória do filme Harry Potter e o Prisioneiro de Azkaban"
-          loading="lazy"
-        >
-
+        <div class="poster">
+          <span class="numero">03</span>
+          <img src="https://image.tmdb.org/t/p/w500/aWxwnYoe8p2d2fcxOqtvAtJ72Rw.jpg"
+               alt="Harry Potter e o Prisioneiro de Azkaban" loading="lazy">
+        </div>
         <div class="filme-conteudo">
           <h2>Harry Potter e o Prisioneiro de Azkaban</h2>
           <p class="ano">📅 2004</p>
-
           <p class="sinopse">
-            Harry aprende mais sobre o passado de seus pais
-            quando Sirius Black, um prisioneiro misterioso,
-            escapa de Azkaban. Segredos e novas criaturas
-            mágicas tornam o ano cheio de surpresas.
+            Harry descobre segredos sobre o passado de seus pais
+            quando Sirius Black escapa de Azkaban. Novas criaturas
+            e revelações mudam tudo o que ele conhecia.
           </p>
+          <span class="casa-filme">✦ CORVINAL</span>
         </div>
       </article>
 
-      <!-- FILME 4 -->
       <article class="filme">
-        <img
-          src="https://placehold.co/400x600/352b15/f5dc83?text=Calice+de+Fogo"
-          alt="Imagem provisória do filme Harry Potter e o Cálice de Fogo"
-          loading="lazy"
-        >
-
+        <div class="poster">
+          <span class="numero">04</span>
+          <img src="https://image.tmdb.org/t/p/w500/fECBtHlr0RB3foNHDiCBXeg9Bv9.jpg"
+               alt="Harry Potter e o Cálice de Fogo" loading="lazy">
+        </div>
         <div class="filme-conteudo">
           <h2>Harry Potter e o Cálice de Fogo</h2>
           <p class="ano">📅 2005</p>
-
           <p class="sinopse">
-            Harry acaba participando inesperadamente do
-            perigoso Torneio Tribruxo. Entre desafios mágicos
-            e novas experiências, acontecimentos importantes
-            mudam o rumo da história.
+            Harry participa inesperadamente do Torneio Tribruxo.
+            Entre desafios mágicos e novas experiências, eventos
+            importantes transformam o mundo bruxo.
           </p>
+          <span class="casa-filme">✦ LUFA-LUFA</span>
         </div>
       </article>
 
-      <!-- FILME 5 -->
       <article class="filme">
-        <img
-          src="https://placehold.co/400x600/241b2f/f0d98b?text=Ordem+da+Fenix"
-          alt="Imagem provisória do filme Harry Potter e a Ordem da Fênix"
-          loading="lazy"
-        >
-
+        <div class="poster">
+          <span class="numero">05</span>
+          <img src="https://image.tmdb.org/t/p/w500/5aOyriWkPec0zUDxmHFP9qMmBaj.jpg"
+               alt="Harry Potter e a Ordem da Fênix" loading="lazy">
+        </div>
         <div class="filme-conteudo">
           <h2>Harry Potter e a Ordem da Fênix</h2>
           <p class="ano">📅 2007</p>
-
           <p class="sinopse">
-            Enquanto muitos duvidam dos avisos de Harry sobre
-            o retorno de Voldemort, ele e seus amigos se
-            organizam para aprender a se defender. Coragem
-            e união se tornam essenciais.
+            Enquanto muitos duvidam de Harry, ele e seus amigos
+            aprendem a se defender. Coragem, união e amizade
+            tornam-se essenciais diante dos novos desafios.
           </p>
+          <span class="casa-filme">✦ GRIFINÓRIA</span>
         </div>
       </article>
 
-      <!-- FILME 6 -->
       <article class="filme">
-        <img
-          src="https://placehold.co/400x600/172b25/9de0bd?text=Enigma+do+Principe"
-          alt="Imagem provisória do filme Harry Potter e o Enigma do Príncipe"
-          loading="lazy"
-        >
-
+        <div class="poster">
+          <span class="numero">06</span>
+          <img src="https://image.tmdb.org/t/p/w500/7xXJ15VEf7G9GdAuV1dO769yC73.jpg"
+               alt="Harry Potter e o Enigma do Príncipe" loading="lazy">
+        </div>
         <div class="filme-conteudo">
           <h2>Harry Potter e o Enigma do Príncipe</h2>
           <p class="ano">📅 2009</p>
-
           <p class="sinopse">
-            Harry aprende mais sobre o passado de Voldemort
-            com Dumbledore. Enquanto novos mistérios surgem,
-            os personagens enfrentam mudanças e decisões
-            cada vez mais difíceis.
+            Harry descobre mais sobre o passado de Voldemort com
+            Dumbledore. Novos mistérios surgem e os personagens
+            enfrentam decisões cada vez mais difíceis.
           </p>
+          <span class="casa-filme">✦ SONSERINA</span>
         </div>
       </article>
 
-      <!-- FILME 7 -->
       <article class="filme">
-        <img
-          src="https://placehold.co/400x600/17263b/9bcaff?text=Reliquias+Parte+1"
-          alt="Imagem provisória do filme Harry Potter e as Relíquias da Morte Parte 1"
-          loading="lazy"
-        >
-
+        <div class="poster">
+          <span class="numero">07</span>
+          <img src="https://image.tmdb.org/t/p/w500/iGoXIpQb7Pot00EEdwpwPajheZ5.jpg"
+               alt="Harry Potter e as Relíquias da Morte Parte 1" loading="lazy">
+        </div>
         <div class="filme-conteudo">
           <h2>Harry Potter e as Relíquias da Morte – Parte 1</h2>
           <p class="ano">📅 2010</p>
-
           <p class="sinopse">
             Longe de Hogwarts, Harry, Rony e Hermione partem
             em uma missão perigosa para encontrar objetos
-            essenciais à derrota de Voldemort. A amizade
-            e a coragem são colocadas à prova.
+            essenciais à derrota de Voldemort.
           </p>
+          <span class="casa-filme">✦ CORVINAL</span>
         </div>
       </article>
 
-      <!-- FILME 8 -->
       <article class="filme">
-        <img
-          src="https://placehold.co/400x600/352b15/f5dc83?text=Reliquias+Parte+2"
-          alt="Imagem provisória do filme Harry Potter e as Relíquias da Morte Parte 2"
-          loading="lazy"
-        >
-
+        <div class="poster">
+          <span class="numero">08</span>
+          <img src="https://image.tmdb.org/t/p/w500/da22ZBmrDOXOCDRvr8Gic8ldhv4.jpg"
+               alt="Harry Potter e as Relíquias da Morte Parte 2" loading="lazy">
+        </div>
         <div class="filme-conteudo">
           <h2>Harry Potter e as Relíquias da Morte – Parte 2</h2>
           <p class="ano">📅 2011</p>
-
           <p class="sinopse">
-            A jornada chega ao seu grande final. Harry e
-            seus aliados enfrentam a batalha decisiva,
-            enquanto mistérios antigos são esclarecidos
-            e o destino do mundo bruxo é definido.
+            A jornada chega ao grande final. Harry e seus aliados
+            enfrentam a batalha decisiva e o destino do mundo
+            bruxo é finalmente definido.
           </p>
+          <span class="casa-filme">✦ LUFA-LUFA</span>
         </div>
       </article>
 
     </section>
 
-    <section style="text-align: center; padding-top: 0;">
-      <h2 style="margin-bottom: 15px;">Qual é o seu favorito?</h2>
-
-      <p style="color: #d5cedd; margin-bottom: 20px;">
-        Conte para nós qual filme mais marcou você!
-      </p>
-
-      <a href="formulario.html" class="botao">
-        ✨ Responder ao formulário
+    <section class="favorito">
+      <h2>✨ Qual é o seu favorito?</h2>
+      <p>Conte para nós qual filme mais marcou você!</p>
+      <a href="formulario.html" class="botao-galeria">
+        🪄 Responder ao formulário
       </a>
     </section>
-
   </main>
 
   <footer>
