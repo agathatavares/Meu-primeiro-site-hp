@@ -6,41 +6,39 @@
     <title>Contato | Harry Potter</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
     <header>
         <h1>O Mundo Mágico de Harry Potter</h1>
         <p>Entre no mundo da magia!</p>
     </header>
-
     <nav>
         <a href="index.html">Início</a>
         <a href="galeria.html">Filmes</a>
         <a href="formulario.html">Contato</a>
     </nav>
-
     <main class="formulario-container">
         <h2>Coruja Expressa</h2>
         <p>
             Envie sua mensagem para Hogwarts!
             Queremos saber o que você pensa sobre a saga.
         </p>
-
         <form id="formulario">
             <label for="nome">Nome do bruxo ou bruxa:</label>
-            <input type="text" id="nome" name="nome"
-                   placeholder="Digite seu nome" required>
-
+            <input
+                type="text"
+                id="nome"
+                name="nome"
+                placeholder="Digite seu nome"
+                required
+            >
             <label for="casa">Qual é a sua casa de Hogwarts?</label>
             <select id="casa" name="casa" required>
                 <option value="">Escolha sua casa</option>
-                <option>Grifinória</option>
-                <option>Sonserina</option>
-                <option>Corvinal</option>
-                <option>Lufa-Lufa</option>
+                <option value="Grifinória">Grifinória</option>
+                <option value="Sonserina">Sonserina</option>
+                <option value="Corvinal">Corvinal</option>
+                <option value="Lufa-Lufa">Lufa-Lufa</option>
             </select>
-
             <label for="filme">Qual é o seu filme favorito?</label>
             <select id="filme" name="filme" required>
                 <option value="">Escolha um filme</option>
@@ -53,39 +51,55 @@
                 <option>As Relíquias da Morte - Parte 1</option>
                 <option>As Relíquias da Morte - Parte 2</option>
             </select>
-
             <label for="email">Seu e-mail:</label>
-            <input type="email" id="email" name="email"
-                   placeholder="exemplo@email.com" required>
-
+            <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="exemplo@email.com"
+                required
+            >
             <label for="mensagem">Sua mensagem:</label>
-            <textarea id="mensagem" name="mensagem" rows="5"
-                      placeholder="Escreva sua mensagem mágica..."
-                      required></textarea>
-
+            <textarea
+                id="mensagem"
+                name="mensagem"
+                rows="5"
+                placeholder="Escreva sua mensagem mágica..."
+                required
+            ></textarea>
             <button type="submit">Enviar por coruja 🦉</button>
         </form>
-
-        <p id="resultado" role="status"></p>
+        <p id="resultado" role="status" aria-live="polite"></p>
     </main>
-
     <footer>
         <p>O Mundo Mágico de Harry Potter</p>
         <p>Após todos esses anos? Sempre.</p>
     </footer>
-
     <script>
-        document.getElementById("formulario").addEventListener("submit", function(event) {
+        const formulario = document.getElementById("formulario");
+        const resultado = document.getElementById("resultado");
+        formulario.addEventListener("submit", function(event) {
             event.preventDefault();
-
-            const nome = document.getElementById("nome").value;
-
-            document.getElementById("resultado").textContent =
-                "Mensagem preenchida com sucesso, " + nome + "!";
-
-            this.reset();
+            if (!formulario.checkValidity()) {
+                formulario.reportValidity();
+                return;
+            }
+            const nome = document.getElementById("nome").value.trim();
+            resultado.textContent =
+                "Sua mensagem foi preenchida com sucesso, " +
+                nome +
+                "! Obrigado por visitar Hogwarts!";
+            resultado.style.display = "block";
+            resultado.style.marginTop = "20px";
+            resultado.style.padding = "15px";
+            resultado.style.borderRadius = "8px";
+            resultado.style.backgroundColor = "#d9c477";
+            resultado.style.color = "#191522";
+            resultado.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
         });
     </script>
-
 </body>
 </html>
