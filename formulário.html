@@ -1,239 +1,92 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Formulário | Mundo Harry Potter</title>
-
-  <link rel="stylesheet" href="style.css">
-
-  <style>
-    .formulario-pagina {
-      max-width: 700px;
-      margin: 50px auto;
-      padding: 30px;
-      background: #171717;
-      border: 1px solid #b99a45;
-      border-radius: 15px;
-      color: #f5f0e1;
-    }
-
-    .formulario-pagina h1 {
-      text-align: center;
-      color: #e0c36e;
-      margin-bottom: 10px;
-    }
-
-    .introducao {
-      text-align: center;
-      margin-bottom: 30px;
-      color: #ddd;
-    }
-
-    .campo {
-      margin-bottom: 22px;
-    }
-
-    .campo label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: bold;
-      color: #e0c36e;
-    }
-
-    .campo input,
-    .campo select,
-    .campo textarea {
-      width: 100%;
-      padding: 12px;
-      box-sizing: border-box;
-      border: 1px solid #806b36;
-      border-radius: 8px;
-      background: #252525;
-      color: white;
-      font-size: 16px;
-    }
-
-    .campo textarea {
-      min-height: 120px;
-      resize: vertical;
-    }
-
-    .campo input:focus,
-    .campo select:focus,
-    .campo textarea:focus {
-      outline: 2px solid #e0c36e;
-    }
-
-    .botao-enviar {
-      display: block;
-      width: 100%;
-      padding: 14px;
-      border: none;
-      border-radius: 8px;
-      background: #b99a45;
-      color: #171717;
-      font-size: 17px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .botao-enviar:hover {
-      background: #e0c36e;
-    }
-
-    #mensagem {
-      display: none;
-      margin-top: 20px;
-      padding: 15px;
-      border: 1px solid #b99a45;
-      border-radius: 8px;
-      color: #f5e6a8;
-      text-align: center;
-    }
-
-    .voltar {
-      display: block;
-      margin-top: 25px;
-      text-align: center;
-      color: #e0c36e;
-    }
-
-    @media (max-width: 600px) {
-      .formulario-pagina {
-        margin: 20px 12px;
-        padding: 20px;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato | Harry Potter</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <header>
+    <header>
+        <h1>O Mundo Mágico de Harry Potter</h1>
+        <p>Entre no mundo da magia!</p>
+    </header>
+
     <nav>
-      <a href="index.html">Início</a>
-      <a href="galeria.html">Galeria de filmes</a>
-      <a href="formulario.html">Formulário</a>
+        <a href="index.html">Início</a>
+        <a href="galeria.html">Filmes</a>
+        <a href="formulario.html">Contato</a>
     </nav>
-  </header>
 
-  <main class="formulario-pagina">
-    <h1>✨ Carta para Hogwarts ✨</h1>
+    <main class="formulario-container">
+        <h2>Coruja Expressa</h2>
+        <p>
+            Envie sua mensagem para Hogwarts!
+            Queremos saber o que você pensa sobre a saga.
+        </p>
 
-    <p class="introducao">
-      Conte um pouco sobre você e seu amor pelo mundo mágico
-      de Harry Potter!
-    </p>
+        <form id="formulario">
+            <label for="nome">Nome do bruxo ou bruxa:</label>
+            <input type="text" id="nome" name="nome"
+                   placeholder="Digite seu nome" required>
 
-    <form id="formulario-hogwarts">
+            <label for="casa">Qual é a sua casa de Hogwarts?</label>
+            <select id="casa" name="casa" required>
+                <option value="">Escolha sua casa</option>
+                <option>Grifinória</option>
+                <option>Sonserina</option>
+                <option>Corvinal</option>
+                <option>Lufa-Lufa</option>
+            </select>
 
-      <div class="campo">
-        <label for="nome">Seu nome:</label>
-        <input
-          type="text"
-          id="nome"
-          name="nome"
-          placeholder="Digite seu nome"
-          required
-        >
-      </div>
+            <label for="filme">Qual é o seu filme favorito?</label>
+            <select id="filme" name="filme" required>
+                <option value="">Escolha um filme</option>
+                <option>A Pedra Filosofal</option>
+                <option>A Câmara Secreta</option>
+                <option>O Prisioneiro de Azkaban</option>
+                <option>O Cálice de Fogo</option>
+                <option>A Ordem da Fênix</option>
+                <option>O Enigma do Príncipe</option>
+                <option>As Relíquias da Morte - Parte 1</option>
+                <option>As Relíquias da Morte - Parte 2</option>
+            </select>
 
-      <div class="campo">
-        <label for="email">E-mail (opcional):</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          placeholder="seuemail@exemplo.com"
-        >
-      </div>
+            <label for="email">Seu e-mail:</label>
+            <input type="email" id="email" name="email"
+                   placeholder="exemplo@email.com" required>
 
-      <div class="campo">
-        <label for="casa">Qual é a sua casa de Hogwarts?</label>
-        <select id="casa" name="casa" required>
-          <option value="">Selecione sua casa</option>
-          <option value="Grifinória">🦁 Grifinória</option>
-          <option value="Sonserina">🐍 Sonserina</option>
-          <option value="Corvinal">🦅 Corvinal</option>
-          <option value="Lufa-Lufa">🦡 Lufa-Lufa</option>
-          <option value="Ainda não sei">Ainda não sei</option>
-        </select>
-      </div>
+            <label for="mensagem">Sua mensagem:</label>
+            <textarea id="mensagem" name="mensagem" rows="5"
+                      placeholder="Escreva sua mensagem mágica..."
+                      required></textarea>
 
-      <div class="campo">
-        <label for="filme">Qual é o seu filme favorito?</label>
-        <select id="filme" name="filme" required>
-          <option value="">Escolha um filme</option>
-          <option value="A Pedra Filosofal">A Pedra Filosofal</option>
-          <option value="A Câmara Secreta">A Câmara Secreta</option>
-          <option value="O Prisioneiro de Azkaban">O Prisioneiro de Azkaban</option>
-          <option value="O Cálice de Fogo">O Cálice de Fogo</option>
-          <option value="A Ordem da Fênix">A Ordem da Fênix</option>
-          <option value="O Enigma do Príncipe">O Enigma do Príncipe</option>
-          <option value="As Relíquias da Morte - Parte 1">As Relíquias da Morte – Parte 1</option>
-          <option value="As Relíquias da Morte - Parte 2">As Relíquias da Morte – Parte 2</option>
-        </select>
-      </div>
+            <button type="submit">Enviar por coruja 🦉</button>
+        </form>
 
-      <div class="campo">
-        <label for="nota">De 1 a 5, quanto você gosta da saga?</label>
-        <select id="nota" name="nota" required>
-          <option value="">Escolha uma nota</option>
-          <option value="1">⭐ 1 - Gostei</option>
-          <option value="2">⭐⭐ 2 - Gostei bastante</option>
-          <option value="3">⭐⭐⭐ 3 - Muito bom</option>
-          <option value="4">⭐⭐⭐⭐ 4 - Incrível</option>
-          <option value="5">⭐⭐⭐⭐⭐ 5 - Sou fã!</option>
-        </select>
-      </div>
+        <p id="resultado" role="status"></p>
+    </main>
 
-      <div class="campo">
-        <label for="comentario">
-          Deixe uma mensagem para o mundo mágico:
-        </label>
-        <textarea
-          id="comentario"
-          name="comentario"
-          placeholder="Conte qual personagem você mais gosta..."
-          required
-        ></textarea>
-      </div>
+    <footer>
+        <p>O Mundo Mágico de Harry Potter</p>
+        <p>Após todos esses anos? Sempre.</p>
+    </footer>
 
-      <button type="submit" class="botao-enviar">
-        Enviar minha carta 🪄
-      </button>
+    <script>
+        document.getElementById("formulario").addEventListener("submit", function(event) {
+            event.preventDefault();
 
-      <p id="mensagem" role="status" aria-live="polite"></p>
+            const nome = document.getElementById("nome").value;
 
-    </form>
+            document.getElementById("resultado").textContent =
+                "Mensagem preenchida com sucesso, " + nome + "!";
 
-    <a href="index.html" class="voltar">
-      ← Voltar para a página inicial
-    </a>
-  </main>
-
-  <footer>
-    <p>Feito por um fã do mundo mágico de Harry Potter ⚡</p>
-  </footer>
-
-  <script>
-    const formulario = document.getElementById("formulario-hogwarts");
-    const mensagem = document.getElementById("mensagem");
-
-    formulario.addEventListener("submit", function(event) {
-      event.preventDefault();
-
-      const nome = document.getElementById("nome").value.trim();
-
-      mensagem.textContent =
-        "✨ Obrigado, " + nome +
-        "! Sua carta foi preenchida com sucesso. " +
-        "Este formulário é uma demonstração e não salva nem envia suas respostas.";
-
-      mensagem.style.display = "block";
-    });
-  </script>
+            this.reset();
+        });
+    </script>
 
 </body>
 </html>
