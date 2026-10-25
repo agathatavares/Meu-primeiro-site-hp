@@ -4,302 +4,141 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Explore os oito filmes da saga Harry Potter.">
-  <title>Galeria Mágica | Harry Potter</title>
+
+  <title>Galeria de Filmes | Mundo Bruxo</title>
+
+  <link rel="stylesheet" href="style.css">
 
   <style>
-    :root {
-      --fundo: #111318;
-      --painel: #1b1e25;
-      --texto: #f5f0e6;
-      --dourado: #d6b66b;
-      --vermelho: #8d2435;
-      --verde: #236447;
-      --azul: #244c80;
-      --amarelo: #d4ac37;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: Georgia, "Times New Roman", serif;
-      background: var(--fundo);
-      color: var(--texto);
-      line-height: 1.6;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    header {
-      background: #191b22;
-      border-bottom: 1px solid #49402b;
-      padding: 20px 7%;
-    }
-
-    .topo {
-      max-width: 1200px;
-      margin: auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .logo {
-      color: var(--dourado);
-      font-size: 1.45rem;
-      font-weight: bold;
-    }
-
-    nav {
-      display: flex;
-      gap: 22px;
-      flex-wrap: wrap;
-    }
-
-    nav a {
-      color: #e8e0d1;
-      transition: color 0.2s;
-    }
-
-    nav a:hover,
-    nav a:focus-visible {
-      color: var(--dourado);
-    }
-
-    .hero {
+    .introducao {
       text-align: center;
-      padding: 75px 20px 55px;
-      background:
-        radial-gradient(ellipse at top, #343020 0%, transparent 65%);
+      padding: 45px 8% 20px;
     }
 
-    .etiqueta {
-      color: var(--dourado);
-      text-transform: uppercase;
-      letter-spacing: 4px;
-      font-size: 0.78rem;
+    .introducao h1 {
+      color: #e3c36c;
+      font-size: clamp(32px, 6vw, 46px);
+      margin-bottom: 12px;
     }
 
-    h1 {
-      font-size: clamp(2.3rem, 6vw, 4rem);
-      margin: 14px 0;
-      line-height: 1.15;
-    }
-
-    .hero p {
-      max-width: 620px;
+    .introducao p {
+      color: #d5cedd;
+      max-width: 700px;
       margin: 0 auto;
-      color: #c9c5bd;
-      font-size: 1.05rem;
     }
 
-    .casas {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 25px;
-    }
-
-    .casa {
-      font-family: Arial, sans-serif;
-      font-size: 0.78rem;
-      padding: 7px 13px;
-      border-radius: 20px;
-      border: 1px solid currentColor;
-    }
-
-    .grifinoria { color: #f08b83; }
-    .sonserina { color: #75c79c; }
-    .corvinal { color: #8bb9f2; }
-    .lufalufa { color: #f0d36f; }
-
-    main {
-      max-width: 1200px;
-      margin: auto;
-      padding: 20px 7% 75px;
-    }
-
-    .secao-titulo {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 15px;
-      flex-wrap: wrap;
-      margin: 20px 0 28px;
-    }
-
-    .secao-titulo h2 {
-      font-size: 1.8rem;
-    }
-
-    .secao-titulo p {
-      color: #aaa9ae;
-      font-size: 0.9rem;
-    }
-
-    .grade {
+    .galeria {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 24px;
+      grid-template-columns: repeat(
+        auto-fit,
+        minmax(230px, 1fr)
+      );
+      gap: 25px;
+      padding: 30px 8% 60px;
     }
 
     .filme {
-      background: var(--painel);
-      border: 1px solid #353640;
+      background: #1d1928;
+      border: 2px solid #393044;
       border-radius: 12px;
       overflow: hidden;
-      transition: transform 0.25s, border-color 0.25s;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
 
     .filme:hover {
       transform: translateY(-6px);
-      border-color: var(--dourado);
+      box-shadow: 0 10px 25px #00000050;
     }
 
-    .poster {
-      position: relative;
-      overflow: hidden;
-      background: #292a31;
-      aspect-ratio: 2 / 3;
-    }
-
-    .poster img {
-      display: block;
+    .filme img {
       width: 100%;
-      height: 100%;
+      aspect-ratio: 2 / 3;
       object-fit: cover;
-      transition: transform 0.35s;
+      background: #292333;
     }
 
-    .filme:hover .poster img {
-      transform: scale(1.04);
+    .filme-conteudo {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
     }
 
-    .numero {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      background: rgba(15, 15, 18, 0.85);
-      color: var(--dourado);
-      padding: 5px 10px;
-      border-radius: 5px;
-      font-size: 0.78rem;
-    }
-
-    .detalhes {
-      padding: 17px;
-      border-top: 3px solid var(--cor-casa);
-    }
-
-    .detalhes h3 {
-      font-size: 1.03rem;
-      line-height: 1.4;
-      margin-bottom: 9px;
+    .filme h2 {
+      font-size: 20px;
+      color: #f0d98b;
+      margin-bottom: 8px;
     }
 
     .ano {
-      font-family: Arial, sans-serif;
-      color: #c4c0b7;
-      font-size: 0.82rem;
+      color: #e3c36c;
+      font-weight: bold;
+      margin-bottom: 10px;
     }
 
-    .casa-tag {
-      display: inline-block;
-      margin-top: 13px;
-      font-family: Arial, sans-serif;
-      font-size: 0.72rem;
-      color: var(--cor-casa);
-      letter-spacing: 1px;
-      text-transform: uppercase;
+    .sinopse {
+      color: #d5cedd;
+      font-size: 14px;
+      line-height: 1.7;
+      margin-bottom: 0;
     }
 
     .filme:nth-child(4n + 1) {
-      --cor-casa: #a52d3e;
+      border-color: #a52a35;
     }
 
     .filme:nth-child(4n + 2) {
-      --cor-casa: #327d57;
+      border-color: #247653;
     }
 
     .filme:nth-child(4n + 3) {
-      --cor-casa: #396ba7;
+      border-color: #3976b8;
     }
 
     .filme:nth-child(4n) {
-      --cor-casa: #d0a72c;
+      border-color: #c9a64b;
     }
 
-    .aviso {
-      margin-top: 35px;
-      padding: 18px;
-      border: 1px solid #45404a;
-      border-radius: 10px;
-      color: #c9c5bd;
-      font-size: 0.9rem;
+    .casas-legenda {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding: 0 15px 20px;
     }
 
-    footer {
-      text-align: center;
-      padding: 28px 20px;
-      border-top: 1px solid #39343a;
-      color: #aaa6a0;
-      font-size: 0.85rem;
+    .casa-tag {
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 13px;
+      background: #1d1928;
+      border: 1px solid #51415f;
     }
 
-    @media (max-width: 950px) {
-      .grade {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 650px) {
-      header {
-        padding: 18px 5%;
-      }
-
-      .topo {
-        justify-content: center;
-      }
-
-      nav {
-        justify-content: center;
-        gap: 16px;
-      }
-
-      .hero {
-        padding: 55px 18px 40px;
-      }
-
-      main {
-        padding: 15px 5% 50px;
-      }
-
-      .grade {
+    @media (max-width: 600px) {
+      .galeria {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 14px;
+        padding: 25px 5% 45px;
       }
 
-      .detalhes {
-        padding: 12px;
+      .filme-conteudo {
+        padding: 11px;
       }
 
-      .detalhes h3 {
-        font-size: 0.92rem;
+      .filme h2 {
+        font-size: 17px;
+      }
+
+      .sinopse {
+        font-size: 13px;
       }
     }
 
     @media (max-width: 360px) {
-      .grade {
+      .galeria {
         grid-template-columns: 1fr;
       }
     }
@@ -307,177 +146,226 @@
 </head>
 
 <body>
-  <header>
-    <div class="topo">
-      <a class="logo" href="index.html">✦ Mundo Mágico</a>
 
-      <nav aria-label="Navegação principal">
-        <a href="index.html">Início</a>
-        <a href="galeria.html" aria-current="page">Galeria</a>
-        <a href="formulario.html">Formulário</a>
-      </nav>
-    </div>
+  <header>
+    <div class="logo">⚡ Mundo Bruxo</div>
+
+    <nav>
+      <a href="index.html">Início</a>
+      <a href="galeria.html">Galeria</a>
+      <a href="formulario.html">Formulário</a>
+    </nav>
   </header>
 
-  <section class="hero">
-    <span class="etiqueta">Bem-vindo a Hogwarts</span>
-    <h1>Galeria de Filmes</h1>
-
-    <p>
-      Oito filmes, uma grande história e um mundo cheio de magia.
-      Reviva a jornada de Harry Potter do início ao fim.
-    </p>
-
-    <div class="casas" aria-label="As quatro casas de Hogwarts">
-      <span class="casa grifinoria">Grifinória</span>
-      <span class="casa sonserina">Sonserina</span>
-      <span class="casa corvinal">Corvinal</span>
-      <span class="casa lufalufa">Lufa-Lufa</span>
-    </div>
-  </section>
-
   <main>
-    <div class="secao-titulo">
-      <div>
-        <h2>Os oito filmes</h2>
-        <p>Uma aventura para cada capítulo desta saga.</p>
-      </div>
+
+    <section class="introducao">
+      <h1>🎬 Galeria de Filmes</h1>
+
+      <p>
+        Relembre os oito filmes de Harry Potter!
+        Conheça um pouquinho de cada aventura,
+        desde a primeira visita a Hogwarts até a batalha final.
+      </p>
+    </section>
+
+    <div class="casas-legenda">
+      <span class="casa-tag">🦁 Grifinória</span>
+      <span class="casa-tag">🐍 Sonserina</span>
+      <span class="casa-tag">🦅 Corvinal</span>
+      <span class="casa-tag">🦡 Lufa-Lufa</span>
     </div>
 
-    <section class="grade" aria-label="Galeria de filmes">
+    <section class="galeria">
 
+      <!-- FILME 1 -->
       <article class="filme">
-        <div class="poster">
-          <img
-            src="https://placehold.co/400x600/20283b/e6c878?text=Pedra+Filosofal"
-            alt="Imagem provisória de Harry Potter e a Pedra Filosofal"
-            loading="lazy">
-          <span class="numero">01</span>
-        </div>
-        <div class="detalhes">
-          <h3>Harry Potter e a Pedra Filosofal</h3>
-          <p class="ano">2001</p>
-          <span class="casa-tag">✦ Grifinória</span>
+        <img
+          src="https://placehold.co/400x600/241b2f/f0d98b?text=Pedra+Filosofal"
+          alt="Imagem provisória do filme Harry Potter e a Pedra Filosofal"
+          loading="lazy"
+        >
+
+        <div class="filme-conteudo">
+          <h2>Harry Potter e a Pedra Filosofal</h2>
+          <p class="ano">📅 2001</p>
+
+          <p class="sinopse">
+            Harry descobre que é um bruxo e começa a estudar
+            em Hogwarts. Lá, faz amizade com Rony e Hermione
+            e conhece um mundo cheio de magia, mistérios e
+            descobertas surpreendentes.
+          </p>
         </div>
       </article>
 
+      <!-- FILME 2 -->
       <article class="filme">
-        <div class="poster">
-          <img
-            src="https://placehold.co/400x600/183d32/d8c58c?text=Camara+Secreta"
-            alt="Imagem provisória de Harry Potter e a Câmara Secreta"
-            loading="lazy">
-          <span class="numero">02</span>
-        </div>
-        <div class="detalhes">
-          <h3>Harry Potter e a Câmara Secreta</h3>
-          <p class="ano">2002</p>
-          <span class="casa-tag">✦ Sonserina</span>
+        <img
+          src="https://placehold.co/400x600/172b25/9de0bd?text=Camara+Secreta"
+          alt="Imagem provisória do filme Harry Potter e a Câmara Secreta"
+          loading="lazy"
+        >
+
+        <div class="filme-conteudo">
+          <h2>Harry Potter e a Câmara Secreta</h2>
+          <p class="ano">📅 2002</p>
+
+          <p class="sinopse">
+            No segundo ano em Hogwarts, acontecimentos
+            misteriosos assustam os alunos. Harry e seus
+            amigos investigam uma antiga lenda da escola
+            para descobrir o que está acontecendo.
+          </p>
         </div>
       </article>
 
+      <!-- FILME 3 -->
       <article class="filme">
-        <div class="poster">
-          <img
-            src="https://placehold.co/400x600/233b60/e2c58d?text=Prisioneiro+de+Azkaban"
-            alt="Imagem provisória de Harry Potter e o Prisioneiro de Azkaban"
-            loading="lazy">
-          <span class="numero">03</span>
-        </div>
-        <div class="detalhes">
-          <h3>Harry Potter e o Prisioneiro de Azkaban</h3>
-          <p class="ano">2004</p>
-          <span class="casa-tag">✦ Corvinal</span>
+        <img
+          src="https://placehold.co/400x600/17263b/9bcaff?text=Prisioneiro+de+Azkaban"
+          alt="Imagem provisória do filme Harry Potter e o Prisioneiro de Azkaban"
+          loading="lazy"
+        >
+
+        <div class="filme-conteudo">
+          <h2>Harry Potter e o Prisioneiro de Azkaban</h2>
+          <p class="ano">📅 2004</p>
+
+          <p class="sinopse">
+            Harry aprende mais sobre o passado de seus pais
+            quando Sirius Black, um prisioneiro misterioso,
+            escapa de Azkaban. Segredos e novas criaturas
+            mágicas tornam o ano cheio de surpresas.
+          </p>
         </div>
       </article>
 
+      <!-- FILME 4 -->
       <article class="filme">
-        <div class="poster">
-          <img
-            src="https://placehold.co/400x600/40331d/f1d36d?text=Calice+de+Fogo"
-            alt="Imagem provisória de Harry Potter e o Cálice de Fogo"
-            loading="lazy">
-          <span class="numero">04</span>
-        </div>
-        <div class="detalhes">
-          <h3>Harry Potter e o Cálice de Fogo</h3>
-          <p class="ano">2005</p>
-          <span class="casa-tag">✦ Lufa-Lufa</span>
+        <img
+          src="https://placehold.co/400x600/352b15/f5dc83?text=Calice+de+Fogo"
+          alt="Imagem provisória do filme Harry Potter e o Cálice de Fogo"
+          loading="lazy"
+        >
+
+        <div class="filme-conteudo">
+          <h2>Harry Potter e o Cálice de Fogo</h2>
+          <p class="ano">📅 2005</p>
+
+          <p class="sinopse">
+            Harry acaba participando inesperadamente do
+            perigoso Torneio Tribruxo. Entre desafios mágicos
+            e novas experiências, acontecimentos importantes
+            mudam o rumo da história.
+          </p>
         </div>
       </article>
 
+      <!-- FILME 5 -->
       <article class="filme">
-        <div class="poster">
-          <img
-            src="https://placehold.co/400x600/382338/e6c878?text=Ordem+da+Fenix"
-            alt="Imagem provisória de Harry Potter e a Ordem da Fênix"
-            loading="lazy">
-          <span class="numero">05</span>
-        </div>
-        <div class="detalhes">
-          <h3>Harry Potter e a Ordem da Fênix</h3>
-          <p class="ano">2007</p>
-          <span class="casa-tag">✦ Grifinória</span>
+        <img
+          src="https://placehold.co/400x600/241b2f/f0d98b?text=Ordem+da+Fenix"
+          alt="Imagem provisória do filme Harry Potter e a Ordem da Fênix"
+          loading="lazy"
+        >
+
+        <div class="filme-conteudo">
+          <h2>Harry Potter e a Ordem da Fênix</h2>
+          <p class="ano">📅 2007</p>
+
+          <p class="sinopse">
+            Enquanto muitos duvidam dos avisos de Harry sobre
+            o retorno de Voldemort, ele e seus amigos se
+            organizam para aprender a se defender. Coragem
+            e união se tornam essenciais.
+          </p>
         </div>
       </article>
 
+      <!-- FILME 6 -->
       <article class="filme">
-        <div class="poster">
-          <img
-            src="https://placehold.co/400x600/23372d/d6c7a0?text=Enigma+do+Principe"
-            alt="Imagem provisória de Harry Potter e o Enigma do Príncipe"
-            loading="lazy">
-          <span class="numero">06</span>
-        </div>
-        <div class="detalhes">
-          <h3>Harry Potter e o Enigma do Príncipe</h3>
-          <p class="ano">2009</p>
-          <span class="casa-tag">✦ Sonserina</span>
+        <img
+          src="https://placehold.co/400x600/172b25/9de0bd?text=Enigma+do+Principe"
+          alt="Imagem provisória do filme Harry Potter e o Enigma do Príncipe"
+          loading="lazy"
+        >
+
+        <div class="filme-conteudo">
+          <h2>Harry Potter e o Enigma do Príncipe</h2>
+          <p class="ano">📅 2009</p>
+
+          <p class="sinopse">
+            Harry aprende mais sobre o passado de Voldemort
+            com Dumbledore. Enquanto novos mistérios surgem,
+            os personagens enfrentam mudanças e decisões
+            cada vez mais difíceis.
+          </p>
         </div>
       </article>
 
+      <!-- FILME 7 -->
       <article class="filme">
-        <div class="poster">
-          <img
-            src="https://placehold.co/400x600/34303d/e5c77b?text=Reliquias+Parte+1"
-            alt="Imagem provisória de Harry Potter e as Relíquias da Morte – Parte 1"
-            loading="lazy">
-          <span class="numero">07</span>
-        </div>
-        <div class="detalhes">
-          <h3>Harry Potter e as Relíquias da Morte – Parte 1</h3>
-          <p class="ano">2010</p>
-          <span class="casa-tag">✦ Corvinal</span>
+        <img
+          src="https://placehold.co/400x600/17263b/9bcaff?text=Reliquias+Parte+1"
+          alt="Imagem provisória do filme Harry Potter e as Relíquias da Morte Parte 1"
+          loading="lazy"
+        >
+
+        <div class="filme-conteudo">
+          <h2>Harry Potter e as Relíquias da Morte – Parte 1</h2>
+          <p class="ano">📅 2010</p>
+
+          <p class="sinopse">
+            Longe de Hogwarts, Harry, Rony e Hermione partem
+            em uma missão perigosa para encontrar objetos
+            essenciais à derrota de Voldemort. A amizade
+            e a coragem são colocadas à prova.
+          </p>
         </div>
       </article>
 
+      <!-- FILME 8 -->
       <article class="filme">
-        <div class="poster">
-          <img
-            src="https://placehold.co/400x600/3c2927/f1d36d?text=Reliquias+Parte+2"
-            alt="Imagem provisória de Harry Potter e as Relíquias da Morte – Parte 2"
-            loading="lazy">
-          <span class="numero">08</span>
-        </div>
-        <div class="detalhes">
-          <h3>Harry Potter e as Relíquias da Morte – Parte 2</h3>
-          <p class="ano">2011</p>
-          <span class="casa-tag">✦ Lufa-Lufa</span>
+        <img
+          src="https://placehold.co/400x600/352b15/f5dc83?text=Reliquias+Parte+2"
+          alt="Imagem provisória do filme Harry Potter e as Relíquias da Morte Parte 2"
+          loading="lazy"
+        >
+
+        <div class="filme-conteudo">
+          <h2>Harry Potter e as Relíquias da Morte – Parte 2</h2>
+          <p class="ano">📅 2011</p>
+
+          <p class="sinopse">
+            A jornada chega ao seu grande final. Harry e
+            seus aliados enfrentam a batalha decisiva,
+            enquanto mistérios antigos são esclarecidos
+            e o destino do mundo bruxo é definido.
+          </p>
         </div>
       </article>
 
     </section>
 
-    <aside class="aviso">
-      ✨ <strong>Um detalhe importante:</strong>
-      as imagens atuais são provisórias. Vamos substituí-las
-      pelos pôsteres que você escolher para a sua galeria.
-    </aside>
+    <section style="text-align: center; padding-top: 0;">
+      <h2 style="margin-bottom: 15px;">Qual é o seu favorito?</h2>
+
+      <p style="color: #d5cedd; margin-bottom: 20px;">
+        Conte para nós qual filme mais marcou você!
+      </p>
+
+      <a href="formulario.html" class="botao">
+        ✨ Responder ao formulário
+      </a>
+    </section>
+
   </main>
 
   <footer>
-    <p>Projeto de fã, sem vínculo oficial com Harry Potter ou Warner Bros.</p>
-    <p>Feito com magia e código ✦</p>
+    <p>Projeto de fã sobre o universo de Harry Potter.</p>
+    <p>Harry Potter pertence aos seus respectivos criadores e detentores de direitos.</p>
   </footer>
+
 </body>
 </html>
