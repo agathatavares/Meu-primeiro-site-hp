@@ -1,0 +1,291 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>O Mundo de Harry Potter</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: #100e18;
+      color: #f5f0e6;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #191522;
+      padding: 20px 8%;
+      border-bottom: 3px solid #c9a64b;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .logo {
+      color: #e3c36c;
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: #f5f0e6;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    nav a:hover {
+      color: #e3c36c;
+    }
+
+    .hero {
+      min-height: 75vh;
+      padding: 80px 8%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background:
+        radial-gradient(ellipse at top, #342448 0%, #100e18 65%);
+    }
+
+    .hero h1 {
+      font-size: clamp(38px, 7vw, 68px);
+      color: #e3c36c;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      max-width: 700px;
+      font-size: 19px;
+      color: #ded7e8;
+      margin-bottom: 30px;
+    }
+
+    .botao {
+      display: inline-block;
+      background: #c9a64b;
+      color: #17111f;
+      padding: 13px 27px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .botao:hover {
+      background: #f0d98b;
+      transform: translateY(-3px);
+    }
+
+    section {
+      padding: 60px 8%;
+      text-align: center;
+    }
+
+    section h2 {
+      font-size: 32px;
+      color: #e3c36c;
+      margin-bottom: 20px;
+    }
+
+    .intro {
+      max-width: 800px;
+      margin: auto;
+      color: #d5cedd;
+      font-size: 17px;
+    }
+
+    .casas {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 35px;
+    }
+
+    .casa {
+      background: #1d1928;
+      padding: 25px 20px;
+      border-radius: 12px;
+      border: 2px solid #393044;
+    }
+
+    .casa h3 {
+      margin-bottom: 10px;
+      font-size: 23px;
+    }
+
+    .grifinoria {
+      border-color: #a52a35;
+    }
+
+    .grifinoria h3 {
+      color: #e45b62;
+    }
+
+    .sonserina {
+      border-color: #247653;
+    }
+
+    .sonserina h3 {
+      color: #63d6a0;
+    }
+
+    .corvinal {
+      border-color: #3976b8;
+    }
+
+    .corvinal h3 {
+      color: #79b9ff;
+    }
+
+    .lufalufa {
+      border-color: #c9a64b;
+    }
+
+    .lufalufa h3 {
+      color: #f0d36d;
+    }
+
+    .destaque {
+      background: #191522;
+      border-top: 1px solid #393044;
+      border-bottom: 1px solid #393044;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #aaa1b8;
+      font-size: 14px;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        justify-content: center;
+        text-align: center;
+      }
+
+      nav {
+        justify-content: center;
+      }
+
+      .hero {
+        min-height: 65vh;
+        padding: 60px 6%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">⚡ Mundo Bruxo</div>
+
+    <nav>
+      <a href="index.html">Início</a>
+      <a href="galeria.html">Galeria</a>
+      <a href="formulario.html">Formulário</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Bem-vindo a Hogwarts</h1>
+
+      <p>
+        Entre no mundo mágico de Harry Potter!
+        Explore os oito filmes, relembre grandes aventuras
+        e descubra a magia por trás de cada história.
+      </p>
+
+      <a class="botao" href="galeria.html">
+        ✨ Explorar os filmes
+      </a>
+    </section>
+
+    <section>
+      <h2>Uma história cheia de magia</h2>
+
+      <p class="intro">
+        Acompanhe a jornada de Harry Potter e seus amigos
+        pelo universo bruxo, desde o primeiro ano em Hogwarts
+        até o confronto final contra as forças das trevas.
+        Prepare-se para conhecer amizades, mistérios,
+        desafios e momentos inesquecíveis.
+      </p>
+    </section>
+
+    <section class="destaque">
+      <h2>As quatro casas de Hogwarts</h2>
+
+      <p class="intro">
+        Cada casa tem suas próprias características.
+        Qual delas combina mais com você?
+      </p>
+
+      <div class="casas">
+        <div class="casa grifinoria">
+          <h3>🦁 Grifinória</h3>
+          <p>Coragem, bravura e determinação.</p>
+        </div>
+
+        <div class="casa sonserina">
+          <h3>🐍 Sonserina</h3>
+          <p>Ambição, astúcia e liderança.</p>
+        </div>
+
+        <div class="casa corvinal">
+          <h3>🦅 Corvinal</h3>
+          <p>Sabedoria, criatividade e inteligência.</p>
+        </div>
+
+        <div class="casa lufalufa">
+          <h3>🦡 Lufa-Lufa</h3>
+          <p>Lealdade, paciência e dedicação.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Reviva os oito filmes</h2>
+
+      <p class="intro">
+        Da Pedra Filosofal às Relíquias da Morte,
+        cada filme revela uma nova parte dessa aventura.
+        Visite nossa galeria para conhecer os títulos
+        e os anos de lançamento.
+      </p>
+
+      <br>
+
+      <a class="botao" href="galeria.html">
+        Ver galeria de filmes
+      </a>
+    </section>
+  </main>
+
+  <footer>
+    <p>Projeto de fã sobre o universo de Harry Potter.</p>
+    <p>Harry Potter é uma obra de seus respectivos criadores e detentores de direitos.</p>
+  </footer>
+
+</body>
+</html>
